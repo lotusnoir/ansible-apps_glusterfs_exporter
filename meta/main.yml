@@ -1,8 +1,8 @@
 ---
 galaxy_info:
   author: "Philippe leal"
-  description: "Install and configure graylog exporter metrics for prometheus"
-  role_name: apps_graylog_exporter
+  description: "Install and configure glusterfs exporter metrics for prometheus"
+  role_name: apps_glusterfs_exporter
   license: "license: Apache License, Version 2.0"
   min_ansible_version: 2.8
 
@@ -15,7 +15,7 @@ galaxy_info:
         - "all"
 
   galaxy_tags:
-    - graylog
+    - glusterfs
     - exporter
     - prometheus
 
