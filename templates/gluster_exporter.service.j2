@@ -1,0 +1,18 @@
+{{ ansible_managed | comment }}
+
+[Unit]
+Description=Prometheus gluster Exporter
+After=network-online.target
+StartLimitInterval=0
+
+[Service]
+Type=simple
+Restart=always
+ExecStart={{ gluster_exporter_install_dir }}/gluster-exporter --config=/etc/gluster-exporter/gluster-exporter.toml
+ExecReload=/bin/kill -HUP $MAINPID
+SyslogIdentifier=gluster-exporter
+RestartSec=1
+PrivateTmp=yes
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,14 @@
+---
+# Binary install
+gluster_exporter_version:           "0.1.0"
+gluster_exporter_url:               "https://github.com/lotusnoir/gluster-prometheus/releases/download/v{{ gluster_exporter_version }}/gluster-exporter"
+gluster_exporter_install_dir:       "/usr/local/bin"
+gluster_exporter_force_install:     true
+
+# Config options
+gluster_exporter_listen_port:       '9129'
+gluster_exporter_metrics_path:      '/metrics'
+gluster_exporter_gluster_binary:    "/usr/sbin/gluster"
+gluster_exporter_log_dir:           "/var/log/gluster-exporter"
+gluster_exporter_log_file:          "exporter.log"
+gluster_exporter_log_level:         "info"

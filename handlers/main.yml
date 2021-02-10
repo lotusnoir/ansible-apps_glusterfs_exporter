@@ -1,0 +1,5 @@
+---
+- name: "restart gluster_exporter"
+  service:
+    name: "gluster_exporter"
+    state: "restarted"
