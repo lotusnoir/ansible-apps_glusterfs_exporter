@@ -14,15 +14,21 @@
 [![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=lotusnoir_ansible-apps_glusterfs_exporter&metric=reliability_rating)](https://sonarcloud.io/dashboard?id=lotusnoir_ansible-apps_glusterfs_exporter)
 [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=lotusnoir_ansible-apps_glusterfs_exporter&metric=security_rating)](https://sonarcloud.io/dashboard?id=lotusnoir_ansible-apps_glusterfs_exporter)
 
-Deploy [glusterfs_exporter](https://github.com/boynux/glusterfs-exporter) to expose glusterfs metrics to prometheus.
+Deploy [glusterfs_exporter](https://github.com/gluster/gluster-prometheus) to expose glusterfs metrics to prometheus.
 
 ## Role variables
 
-| Name           | Default Value | Description                        |
-| -------------- | ------------- | -----------------------------------|
-| `glusterfs_exporter_install_dir` | /usr/local/bin | directory to install binary |
-| `glusterfs_exporter_force_install` | false | force install variable |
-| `glusterfs_exporter_listen_port` | 9122 | port to expose prometheus metrics |
+| Name                               | Default Value             | Description                        |
+| ---------------------------------- | ------------------------- | -----------------------------------|
+| `gluster_exporter_version`         | 0.1.0                     | exporter version |
+| `glusterfs_exporter_install_dir`   | /usr/local/bin            | exporter binary install dir |
+| `glusterfs_exporter_force_install` | false                     | force exporter install |
+| `glusterfs_exporter_listen_port`   | 9129                      | port to expose prometheus metrics |
+| `gluster_exporter_metrics_path`    | /metrics                  | metrics expose path |
+| `gluster_exporter_gluster_binary`  | /usr/sbin/gluster         | gluster binary |
+| `gluster_exporter_log_dir`         | /var/log/gluster-exporter | log directory |
+| `gluster_exporter_log_file`        | exporter.log              | exporter log filename |
+| `gluster_exporter_log_level`       | info                      | exporter log level |
 
 ## Examples
 
