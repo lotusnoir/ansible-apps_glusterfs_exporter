@@ -1,46 +1,47 @@
 ---
 - name: "Check for gluster-exporter binary"
-  stat:
+  ansible.builtin.stat:
     path: "{{ gluster_exporter_install_dir }}/gluster-exporter"
   changed_when: false
   register: gluster_exporter_install
 
-- when: not gluster_exporter_install.stat.exists or gluster_exporter_force_install|bool
+- name: "Install tasks"
+  when: not gluster_exporter_install.stat.exists or gluster_exporter_force_install|bool
   block:
     - name: "Install requierements"
-      package:
+      ansible.builtin.package:
         name: "ca-certificates"
         state: present
 
     - name: "Download gluster-exporter..."
-      get_url:
+      ansible.builtin.get_url:
         url: '{{ gluster_exporter_url }}'
         dest: '{{ gluster_exporter_install_dir }}/gluster-exporter'
         timeout: '60'
         mode: '0755'
 
 - name: "Creates directory"
-  file:
+  ansible.builtin.file:
     path: /etc/gluster-exporter
     state: directory
     mode: 0755
 
 - name: "Create systemd for gluster_exporter"
-  template:
+  ansible.builtin.template:
     src: 'gluster_exporter.service.j2'
     dest: '/etc/systemd/system/gluster_exporter.service'
     mode: '0640'
   notify: "restart gluster_exporter"
 
 - name: "Create config file"
-  template:
+  ansible.builtin.template:
     src: 'gluster-exporter.toml.j2'
     dest: '/etc/gluster-exporter/gluster-exporter.toml'
     mode: '0640'
   notify: "restart gluster_exporter"
 
 - name: "BUGFIX https://github.com/gluster/glusterfs/issues/845"
-  copy:
+  ansible.builtin.copy:
     src: xfs_info
     dest: /usr/sbin/xfs_info
     owner: root
@@ -48,7 +49,7 @@
     mode: '0755'
 
 - name: "Enable and Start gluster_exporter.service"
-  service:
+  ansible.builtin.service:
     name: gluster_exporter
     state: started
     enabled: true
