@@ -1,5 +1,5 @@
 ---
-- name: "restart gluster_exporter"
+- name: "Restart gluster_exporter"
   ansible.builtin.service:
     name: "gluster_exporter"
     state: "restarted"

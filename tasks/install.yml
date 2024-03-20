@@ -31,14 +31,14 @@
     src: 'gluster_exporter.service.j2'
     dest: '/etc/systemd/system/gluster_exporter.service'
     mode: '0640'
-  notify: "restart gluster_exporter"
+  notify: "Restart gluster_exporter"
 
 - name: "Create config file"
   ansible.builtin.template:
     src: 'gluster-exporter.toml.j2'
     dest: '/etc/gluster-exporter/gluster-exporter.toml'
     mode: '0640'
-  notify: "restart gluster_exporter"
+  notify: "Restart gluster_exporter"
 
 - name: "BUGFIX https://github.com/gluster/glusterfs/issues/845"
   ansible.builtin.copy:
