@@ -22,6 +22,7 @@
 ## Description
 
 Deploy [glusterfs_exporter](https://github.com/gluster/gluster-prometheus) to expose glusterfs metrics to prometheus.
+
 ## Requirements
 
 none
@@ -39,7 +40,6 @@ See [variables](/defaults/main.yml) for more details.
           gather_facts: true
           roles:
             - role: ansible-apps_glusterfs_exporter
-
 
 ## License
 
